@@ -4,15 +4,24 @@ import { infusionSvg, signatureLayers } from "./technology-signature";
 import bigNickelAsset from "@/assets/big-nickel.png.asset.json";
 import waterTowerAsset from "@/assets/water-tower.png.asset.json";
 import scienceNorthAsset from "@/assets/science-north.png.asset.json";
+import { landmarkAssets } from "./standalone-assets";
 
 /** Sudbury landmark line art assigned to each specimen, cycling the three icons. */
+// export const LANDMARKS: Record<string, { url: string; label: string }> = {
+//   nickel: { url: bigNickelAsset.url, label: "Big Nickel" },
+//   copper: { url: waterTowerAsset.url, label: "Sudbury water tower" },
+//   crystal: { url: scienceNorthAsset.url, label: "Science North" },
+//   aurora: { url: bigNickelAsset.url, label: "Big Nickel" },
+//   iron: { url: waterTowerAsset.url, label: "Sudbury water tower" },
+//   quartz: { url: scienceNorthAsset.url, label: "Science North" },
+// };
 export const LANDMARKS: Record<string, { url: string; label: string }> = {
-  nickel: { url: bigNickelAsset.url, label: "Big Nickel" },
-  copper: { url: waterTowerAsset.url, label: "Sudbury water tower" },
-  crystal: { url: scienceNorthAsset.url, label: "Science North" },
-  aurora: { url: bigNickelAsset.url, label: "Big Nickel" },
-  iron: { url: waterTowerAsset.url, label: "Sudbury water tower" },
-  quartz: { url: scienceNorthAsset.url, label: "Science North" },
+  nickel: { url: landmarkAssets.bigNickel, label: "Big Nickel" },
+  copper: { url: landmarkAssets.waterTower, label: "Sudbury water tower" },
+  crystal: { url: landmarkAssets.scienceNorth, label: "Science North" },
+  aurora: { url: landmarkAssets.bigNickel, label: "Big Nickel" },
+  iron: { url: landmarkAssets.waterTower, label: "Sudbury water tower" },
+  quartz: { url: landmarkAssets.scienceNorth, label: "Science North" },
 };
 
 const escape = (value: string) => value.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&apos;" })[c] ?? c);

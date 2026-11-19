@@ -1,15 +1,24 @@
-import model from "@/assets/selfie-segmenter.tflite.asset.json";
-import runtime from "@/assets/portrait-vision-runtime.js.asset.json";
-import wasm from "@/assets/portrait-vision-runtime.wasm.asset.json";
+import { portraitAssets } from "./standalone-assets";
 import type { ImageSegmenter } from "@mediapipe/tasks-vision";
 
 let engine: Promise<ImageSegmenter> | undefined;
 function segmenter() {
   if (!engine) {
-    engine = import("@mediapipe/tasks-vision").then(({ ImageSegmenter }) => ImageSegmenter.createFromOptions(
-      { wasmLoaderPath: runtime.url, wasmBinaryPath: wasm.url },
-      { baseOptions: { modelAssetPath: model.url, delegate: "CPU" }, runningMode: "IMAGE", outputConfidenceMasks: true, outputCategoryMask: false },
-    )).catch((error) => { engine = undefined; throw error; });
+    engine = import("@mediapipe/tasks-vision").then(async ({ ImageSegmenter }) => {
+      // Reassemble the unchanged runtime locally; parts keep source archives portable.
+      const parts = await Promise.all(portraitAssets.wasmParts.map(async (url) => {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Portrait runtime unavailable.");
+        return response.arrayBuffer();
+      }));
+      const wasmUrl = URL.createObjectURL(new Blob(parts, { type: "application/wasm" }));
+      try {
+        return await ImageSegmenter.createFromOptions(
+          { wasmLoaderPath: portraitAssets.wasmLoaderPath, wasmBinaryPath: wasmUrl },
+          { baseOptions: { modelAssetPath: portraitAssets.modelAssetPath, delegate: "CPU" }, runningMode: "IMAGE", outputConfidenceMasks: true, outputCategoryMask: false },
+        );
+      } finally { URL.revokeObjectURL(wasmUrl); }
+    }).catch((error) => { engine = undefined; throw error; });
   }
   return engine;
 }
