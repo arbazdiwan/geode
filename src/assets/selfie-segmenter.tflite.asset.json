@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "asset_id": "77905120-69dc-426a-a970-2cc42020f7f8",
+  "project_id": "4f073139-1db4-49d8-9931-1e889a1b76bc",
+  "url": "/__l5e/assets-v1/77905120-69dc-426a-a970-2cc42020f7f8/selfie-segmenter.tflite",
+  "r2_key": "a/v1/4f073139-1db4-49d8-9931-1e889a1b76bc/77905120-69dc-426a-a970-2cc42020f7f8/selfie-segmenter.tflite",
+  "original_filename": "selfie-segmenter.tflite",
+  "size": 249537,
+  "content_type": "application/octet-stream",
+  "created_at": "2026-11-19T04:40:13Z"
+}

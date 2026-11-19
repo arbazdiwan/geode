@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "asset_id": "6b192844-6fe6-495c-a51b-930c9cfd670d",
+  "project_id": "4f073139-1db4-49d8-9931-1e889a1b76bc",
+  "url": "/__l5e/assets-v1/6b192844-6fe6-495c-a51b-930c9cfd670d/portrait-vision-runtime.wasm",
+  "r2_key": "a/v1/4f073139-1db4-49d8-9931-1e889a1b76bc/6b192844-6fe6-495c-a51b-930c9cfd670d/portrait-vision-runtime.wasm",
+  "original_filename": "portrait-vision-runtime.wasm",
+  "size": 14665716,
+  "content_type": "application/wasm",
+  "created_at": "2026-11-19T04:40:39Z"
+}
